@@ -16,7 +16,7 @@ public class FileRepository<T, TDto>(IOptions<FileRepositoryOptions> opts, IMapp
         try
         {
             using var streamReader = new StreamReader(_opts.FileLocation);
-            var deserialized = await JsonSerializer.DeserializeAsync<List<TDto>>(streamReader.BaseStream, new JsonSerializerOptions { DefaultIgnoreCondition = JsonIgnoreCondition.Never});
+            var deserialized = await JsonSerializer.DeserializeAsync<List<TDto>>(streamReader.BaseStream, new JsonSerializerOptions { DefaultIgnoreCondition = JsonIgnoreCondition.Never });
             if (deserialized == null)
                 return Result<IList<T>>.Failure($"Could not deserialize the file content: {_opts.FileLocation}");
             return deserialized.Select(mapper.Map).Where(e => predicate(e)).ToList();

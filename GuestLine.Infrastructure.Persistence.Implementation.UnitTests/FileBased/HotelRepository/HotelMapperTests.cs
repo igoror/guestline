@@ -60,6 +60,6 @@ public class HotelMapperTests
 
         var entity = new HotelMapper().Map(dto);
 
-        entity.Should().BeEquivalentTo(new BookingEntity("hotelId", dto.Arrival, dto.Departure, "rt", "rr"));
+        entity.Should().BeEquivalentTo(new BookingEntity("hotelId", dto.Arrival, dto.Departure, "rt", "rr"), opts => opts.Excluding(x => x.Id));
     }
 }
