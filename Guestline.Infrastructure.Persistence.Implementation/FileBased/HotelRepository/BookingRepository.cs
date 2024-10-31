@@ -1,4 +1,5 @@
 using Guestline.Domain;
+using Guestline.Domain.Models;
 using Microsoft.Extensions.Options;
 
 namespace Guestline.Infrastructure.Persistence.Implementation.FileBased.HotelRepository;

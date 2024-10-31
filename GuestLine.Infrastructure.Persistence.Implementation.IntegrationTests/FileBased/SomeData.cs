@@ -1,4 +1,5 @@
 using Guestline.Domain;
+using Guestline.Domain.Models;
 
 namespace GuestLine.Infrastructure.Persistence.Implementation.IntegrationTests.FileBased;
 

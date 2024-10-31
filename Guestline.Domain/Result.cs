@@ -11,7 +11,7 @@ public class Result<T>
                 throw new InvalidOperationException("Cannot retrieve value from a failed result");
             return _value!;
         }
-        set => _value = value;
+        private set => _value = value;
     }
 
     public Exception? Exception { get; }

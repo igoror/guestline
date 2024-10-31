@@ -1,5 +1,6 @@
 using FluentAssertions;
 using Guestline.Domain;
+using Guestline.Domain.Models;
 using Guestline.Infrastructure.Persistence.Implementation.FileBased.HotelRepository;
 
 namespace GuestLine.Infrastructure.Persistence.Implementation.UnitTests.FileBased.HotelRepository;
