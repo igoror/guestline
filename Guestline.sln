@@ -10,6 +10,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Guestline.Infrastructure.Pe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Guestline.Infrastructure.Persistence.Implementation", "Guestline.Infrastructure.Persistence.Implementation\Guestline.Infrastructure.Persistence.Implementation.csproj", "{5999D6D5-00B0-4826-9C73-099FB5020A2D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Guestline.Domain.UnitTests", "Guestline.Domain.UnitTests\Guestline.Domain.UnitTests.csproj", "{E14EDB07-A6F0-4869-BB7D-9A7F1B30328F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GuestLine.Infrastructure.Persistence.Implementation.IntegrationTests", "GuestLine.Infrastructure.Persistence.Implementation.IntegrationTests\GuestLine.Infrastructure.Persistence.Implementation.IntegrationTests.csproj", "{55B59553-ADCB-4157-9BB6-BA734A47EF70}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,7 +36,17 @@ Global
 		{5999D6D5-00B0-4826-9C73-099FB5020A2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5999D6D5-00B0-4826-9C73-099FB5020A2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5999D6D5-00B0-4826-9C73-099FB5020A2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E14EDB07-A6F0-4869-BB7D-9A7F1B30328F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E14EDB07-A6F0-4869-BB7D-9A7F1B30328F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E14EDB07-A6F0-4869-BB7D-9A7F1B30328F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E14EDB07-A6F0-4869-BB7D-9A7F1B30328F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55B59553-ADCB-4157-9BB6-BA734A47EF70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55B59553-ADCB-4157-9BB6-BA734A47EF70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55B59553-ADCB-4157-9BB6-BA734A47EF70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55B59553-ADCB-4157-9BB6-BA734A47EF70}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{E14EDB07-A6F0-4869-BB7D-9A7F1B30328F} = {24BDD65E-FB18-4795-9847-5754E81CB3D2}
+		{55B59553-ADCB-4157-9BB6-BA734A47EF70} = {24BDD65E-FB18-4795-9847-5754E81CB3D2}
 	EndGlobalSection
 EndGlobal
