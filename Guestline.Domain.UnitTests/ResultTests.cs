@@ -1,4 +1,5 @@
 using FluentAssertions;
+using Guestline.Infrastructure.Persistence.Contracts;
 
 namespace Guestline.Domain.UnitTests;
 

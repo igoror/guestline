@@ -10,9 +10,10 @@ public class CustomDateTimeConverter : JsonConverter<DateTime>
     public override DateTime Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {
         var dateTimeString = reader.GetString();
+
         if (DateTime.TryParseExact(dateTimeString, _format, null, System.Globalization.DateTimeStyles.AssumeUniversal, out DateTime dateTime))
         {
-            return dateTime.Date;
+            return DateTime.SpecifyKind(dateTime.Date, DateTimeKind.Utc);
         }
         throw new JsonException($"DateTime format should be {_format}");
     }

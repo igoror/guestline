@@ -1,8 +1,7 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using Guestline.Domain;
-using Guestline.Domain.Models;
 using Guestline.Infrastructure.Persistence.Contracts;
+using Guestline.Infrastructure.Persistence.Contracts.Models;
 using Microsoft.Extensions.Options;
 
 namespace Guestline.Infrastructure.Persistence.Implementation.FileBased;

@@ -6,4 +6,8 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Guestline.Infrastructure.Persistence.Contracts\Guestline.Infrastructure.Persistence.Contracts.csproj" />
+    </ItemGroup>
+
 </Project>

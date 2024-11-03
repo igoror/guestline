@@ -1,9 +1,24 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
+        <OutputType>Exe</OutputType>
         <TargetFramework>net8.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
     </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Guestline.Domain\Guestline.Domain.csproj" />
+      <ProjectReference Include="..\Guestline.Infrastructure.Persistence.Implementation\Guestline.Infrastructure.Persistence.Implementation.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Update="SampleData\hotels_data.json">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+      <None Update="SampleData\bookings_data.json">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
 
 </Project>

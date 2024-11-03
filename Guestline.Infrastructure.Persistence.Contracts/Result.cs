@@ -1,4 +1,4 @@
-namespace Guestline.Domain;
+namespace Guestline.Infrastructure.Persistence.Contracts;
 
 public class Result<T>
 {
@@ -22,6 +22,14 @@ public class Result<T>
     public static Result<T> Failure(string error) => new(error);
     public static implicit operator Result<T>(T v) => Success(v);
     public static implicit operator Result<T>(Exception e) => Failure(e);
+
+    public Result<T> ToFailure<T>()
+    {
+        if (IsSuccess)
+            throw new InvalidOperationException("Cannot cast successful result to a failure");
+
+        return Exception != null ? Result<T>.Failure(Exception) : Result<T>.Failure(Error!);
+    }
 
     private Result(T value)
     {

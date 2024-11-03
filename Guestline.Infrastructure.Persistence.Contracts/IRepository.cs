@@ -1,5 +1,4 @@
-using Guestline.Domain;
-using Guestline.Domain.Models;
+using Guestline.Infrastructure.Persistence.Contracts.Models;
 
 namespace Guestline.Infrastructure.Persistence.Contracts;
 
