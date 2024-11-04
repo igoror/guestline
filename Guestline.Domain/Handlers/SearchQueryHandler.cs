@@ -53,12 +53,13 @@ public class SearchQueryHandler: IQueryHandler<SearchQueryRequest, SearchQueryRe
             events.Enqueue(("A", arrivalCount), (crossingBooking.Key, 2));
             events.Enqueue(("D", departureCount), (crossingBooking.Key, 0));
         }
+        
+        // Artificial events for starting and ending of request
         events.Enqueue(("Aa", 1), (queryRequest.StartDate, 1));
         events.Enqueue(("Dd", 1), (queryRequest.EndDate, -1));
         
         var result = new List<(DateTime Start, DateTime End, int RoomsCount)>();
         var availableRoomsCount = allRoomsCount;
-        var minAvailableRoomsCount = allRoomsCount;
         DateTime? currentPeriodStartDate = null; 
         var started = false;
         while (events.Count != 0)
@@ -71,7 +72,6 @@ public class SearchQueryHandler: IQueryHandler<SearchQueryRequest, SearchQueryRe
             {
                 TryAddPeriod(started, ref currentPeriodStartDate, priority.Item1, availableRoomsCount, result);
                 availableRoomsCount -= count;
-                minAvailableRoomsCount = Math.Min(minAvailableRoomsCount, availableRoomsCount);
             }
             else if (type == "D")
             {

@@ -23,12 +23,12 @@ public class Result<T>
     public static implicit operator Result<T>(T v) => Success(v);
     public static implicit operator Result<T>(Exception e) => Failure(e);
 
-    public Result<T> ToFailure<T>()
+    public Result<NewT> ToFailure<NewT>()
     {
         if (IsSuccess)
             throw new InvalidOperationException("Cannot cast successful result to a failure");
 
-        return Exception != null ? Result<T>.Failure(Exception) : Result<T>.Failure(Error!);
+        return Exception != null ? Result<NewT>.Failure(Exception) : Result<NewT>.Failure(Error!);
     }
 
     private Result(T value)
