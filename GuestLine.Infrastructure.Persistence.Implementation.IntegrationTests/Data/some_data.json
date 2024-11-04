@@ -1,0 +1,16 @@
+[
+  { 
+    "id":  "id1",
+    "some_property": "property_val",
+    "nested_object": {
+      "nested_object_property": "nested_value"
+    }
+  },
+  {
+    "id":  "id2",
+    "some_property": "property_val2",
+    "nested_object": {
+      "nested_object_property": "nested_value2"
+    }
+  }
+]

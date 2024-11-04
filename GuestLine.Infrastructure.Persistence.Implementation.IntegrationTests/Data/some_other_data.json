@@ -1,0 +1,9 @@
+[
+  { 
+    "id2":  "id1",
+    "some_property2": "property_val",
+    "nested_object2": {
+      "nested_object_property2": "nested_value"
+    }
+  }
+]

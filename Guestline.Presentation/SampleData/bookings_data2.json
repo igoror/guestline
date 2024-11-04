@@ -1,0 +1,122 @@
+[
+  {
+    "hotelId": "H1",
+    "arrival": "20241104",
+    "departure": "20241106",
+    "roomType": "SGL",
+    "roomRate": "Prepaid"
+  },
+  {
+    "hotelId": "H1",
+    "arrival": "20241104",
+    "departure": "20241106",
+    "roomType": "SGL",
+    "roomRate": "Prepaid"
+  },
+  {
+    "hotelId": "H1",
+    "arrival": "20241104",
+    "departure": "20241106",
+    "roomType": "SGL",
+    "roomRate": "Prepaid"
+  },
+  {
+    "hotelId": "H1",
+    "arrival": "20241104",
+    "departure": "20241106",
+    "roomType": "SGL",
+    "roomRate": "Prepaid"
+  },
+  {
+    "hotelId": "H1",
+    "arrival": "20241104",
+    "departure": "20241110",
+    "roomType": "SGL",
+    "roomRate": "Prepaid"
+  },
+  {
+    "hotelId": "H1",
+    "arrival": "20241105",
+    "departure": "20241106",
+    "roomType": "SGL",
+    "roomRate": "Prepaid"
+  },
+  {
+    "hotelId": "H1",
+    "arrival": "20241107",
+    "departure": "20241108",
+    "roomType": "SGL",
+    "roomRate": "Prepaid"
+  },
+  {
+    "hotelId": "H1",
+    "arrival": "20241107",
+    "departure": "20241108",
+    "roomType": "SGL",
+    "roomRate": "Prepaid"
+  }
+,
+  {
+    "hotelId": "H1",
+    "arrival": "20241107",
+    "departure": "20241108",
+    "roomType": "SGL",
+    "roomRate": "Prepaid"
+  }
+,
+  {
+    "hotelId": "H1",
+    "arrival": "20241107",
+    "departure": "20241108",
+    "roomType": "SGL",
+    "roomRate": "Prepaid"
+  }
+,
+  {
+    "hotelId": "H1",
+    "arrival": "20241107",
+    "departure": "20241108",
+    "roomType": "SGL",
+    "roomRate": "Prepaid"
+  }
+,
+  {
+    "hotelId": "H1",
+    "arrival": "20241107",
+    "departure": "20241109",
+    "roomType": "SGL",
+    "roomRate": "Prepaid"
+  }
+,
+  {
+    "hotelId": "H1",
+    "arrival": "20241107",
+    "departure": "20241109",
+    "roomType": "SGL",
+    "roomRate": "Prepaid"
+  }
+,
+  {
+    "hotelId": "H1",
+    "arrival": "20241107",
+    "departure": "20241109",
+    "roomType": "SGL",
+    "roomRate": "Prepaid"
+  }
+,
+  {
+    "hotelId": "H1",
+    "arrival": "20241107",
+    "departure": "20241109",
+    "roomType": "SGL",
+    "roomRate": "Prepaid"
+  }
+,
+  {
+    "hotelId": "H1",
+    "arrival": "20241107",
+    "departure": "20241109",
+    "roomType": "SGL",
+    "roomRate": "Prepaid"
+  }
+]
