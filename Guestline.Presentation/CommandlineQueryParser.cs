@@ -4,14 +4,14 @@ using Guestline.Domain.Handlers.Requests;
 
 namespace Guestline.Presentation;
 
-public class CommandlineQueryFactory
+public class CommandlineQueryParser
 {
     private readonly Regex AvailabilityRegex = new("^Availability\\((.+), (.+), (.+)\\)$", RegexOptions.Compiled);
     private readonly Regex SearchRegex = new("^Search\\((.+), ([1-9]\\d*), (.+)\\)$", RegexOptions.Compiled);
     private readonly Regex DateRangeRegex = new("([1-9]\\d{7})-?([1-9]\\d{7})?", RegexOptions.Compiled);
 
     
-    public QueryRequest? GetNext(string command)
+    public QueryRequest? Parse(string command)
     {
         if (AvailabilityRegex.IsMatch(command))
         {

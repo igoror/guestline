@@ -19,8 +19,8 @@ public class BookingRepositoryTests : RepositoryTestsBase<BookingRepository>
         result.IsSuccess.Should().BeTrue();
         result.Value.Should().BeEquivalentTo([
             new BookingEntity("H1", new DateTime(2024, 9, 1),
-                new DateTime(2024, 9, 3), "DBL", "Prepaid"),
-            new BookingEntity("H1", new DateTime(2024, 9, 2),
+                new DateTime(2024, 9, 3, 0,0,0, DateTimeKind.Utc), "DBL", "Prepaid"),
+            new BookingEntity("H1", new DateTime(2024, 9, 2, 0, 0,0, DateTimeKind.Utc),
                 new DateTime(2024, 9, 5), "SGL", "Standard")
         ], opts => opts.Excluding(e => e.Id));
     }

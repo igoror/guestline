@@ -12,7 +12,7 @@ await Process();
 
 async Task Process()
 {
-    var commandFactory = new CommandlineQueryFactory();
+    var commandFactory = new CommandlineQueryParser();
     var bookingRepository = new BookingRepository(Options.Create(new FileRepositoryOptions()
         { FileLocation = options.BookingsPath }), new HotelMapper());
     var hotelRepository = new HotelRepository(Options.Create(new FileRepositoryOptions()
@@ -26,7 +26,7 @@ async Task Process()
         if (string.IsNullOrEmpty(currentInput))
             return;
 
-        var query = commandFactory.GetNext(currentInput);
+        var query = commandFactory.Parse(currentInput);
         if (query == null)
         {
             Console.WriteLine("Invalid input provided");
