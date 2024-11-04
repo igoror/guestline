@@ -17,8 +17,8 @@ async Task Process()
         { FileLocation = options.BookingsPath }), new HotelMapper());
     var hotelRepository = new HotelRepository(Options.Create(new FileRepositoryOptions()
         { FileLocation = options.HotelsPath }), new HotelMapper());
-    var availabilityQueryHandler = new AvailabilityQueryHandler(bookingRepository, hotelRepository);
     var searchQueryHandler = new SearchQueryHandler(bookingRepository, hotelRepository);
+    var availabilityQueryHandler = new AvailabilityQueryHandler(searchQueryHandler);
     
     while (true)
     {

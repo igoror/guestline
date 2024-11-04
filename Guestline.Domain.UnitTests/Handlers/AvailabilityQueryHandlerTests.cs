@@ -11,7 +11,8 @@ public class AvailabilityQueryHandlerTests : QueryHandlerTestsBase
     [SetUp]
     public void Setup()
     {
-        _handler = new AvailabilityQueryHandler(BookingRepo, HotelRepo);
+        var searchQueryHandler = new SearchQueryHandler(BookingRepo, HotelRepo);
+        _handler = new AvailabilityQueryHandler(searchQueryHandler);
     }
 
     [Test]
@@ -20,7 +21,7 @@ public class AvailabilityQueryHandlerTests : QueryHandlerTestsBase
         var hotelId = MockHotel(("Type", 10));
         MockReservations(hotelId);
 
-        var result = await _handler.Handle(new AvailabilityQueryRequest(hotelId, DateTime.Now, DateTime.Today, "Type"),
+        var result = await _handler.Handle(new AvailabilityQueryRequest(hotelId, DateTime.Now, DateTime.Now.AddDays(1), "Type"),
             default);
 
         result.IsSuccess.Should().BeTrue();

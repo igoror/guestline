@@ -19,6 +19,9 @@ public class SearchQueryHandler: IQueryHandler<SearchQueryRequest, SearchQueryRe
 
     public async Task<Result<SearchQueryResponse>> Handle(SearchQueryRequest queryRequest, CancellationToken cancellationToken)
     {
+        if (queryRequest.StartDate.Date == queryRequest.EndDate.Date)
+            return new SearchQueryResponse(Enumerable.Empty<(DateTime Start, DateTime End, int RoomsCount)>().ToList());
+        
         var hotelResult = await _hotelRepository.FindAsync(h => h.Id == queryRequest.HotelId);
         if (!hotelResult.IsSuccess)
             return hotelResult.ToFailure<SearchQueryResponse>();
