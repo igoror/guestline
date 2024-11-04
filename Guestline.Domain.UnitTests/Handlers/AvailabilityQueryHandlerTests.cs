@@ -1,24 +1,17 @@
 using FluentAssertions;
 using Guestline.Domain.Handlers;
 using Guestline.Domain.Handlers.Requests;
-using Guestline.Infrastructure.Persistence.Contracts;
-using Guestline.Infrastructure.Persistence.Contracts.Models;
-using NSubstitute;
 
 namespace Guestline.Domain.UnitTests.Handlers;
 
-public class AvailabilityQueryHandlerTests
+public class AvailabilityQueryHandlerTests : QueryHandlerTestsBase
 {
-    private IRepository<BookingEntity> _bookingRepo;
-    private IRepository<HotelEntity> _hotelRepo;
     private AvailabilityQueryHandler _handler;
 
     [SetUp]
     public void Setup()
     {
-        _bookingRepo = Substitute.For<IRepository<BookingEntity>>();
-        _hotelRepo = Substitute.For<IRepository<HotelEntity>>();
-        _handler = new AvailabilityQueryHandler(_bookingRepo, _hotelRepo);
+        _handler = new AvailabilityQueryHandler(BookingRepo, HotelRepo);
     }
 
     [Test]
@@ -217,25 +210,5 @@ public class AvailabilityQueryHandlerTests
 
         result.IsSuccess.Should().BeTrue();
         result.Value.AvailabilityCount.Should().Be(1);
-    }
-    
-    private string MockHotel(params (string type, int number)[] hotelRooms)
-    {
-        var id = Guid.NewGuid().ToString();
-        var rooms = hotelRooms.Select(param =>
-                Enumerable.Range(0, param.number).Select(i => new Room(param.type, i.ToString())).ToList())
-            .SelectMany(x => x).ToList();
-        var hotelEntity = new HotelEntity(id, id, [], rooms.ToArray());
-
-        var result = Result<IList<HotelEntity>>.Success(new List<HotelEntity> { hotelEntity });
-        _hotelRepo.FindAsync(Arg.Any<Predicate<HotelEntity>>()).Returns(result);
-        return hotelEntity.Id;
-    }
-
-    private void MockReservations(string hotelId, params (DateTime start, DateTime end, string roomType)[] reservations)
-    {
-        var entities = reservations.Select(r => new BookingEntity(hotelId, r.start, r.end, r.roomType, "rate")).ToList();
-        _bookingRepo.FindAsync(Arg.Any<Predicate<BookingEntity>>())
-            .Returns(args => entities.Where(x => ((Predicate<BookingEntity>)args[0])(x)).ToList());
     }
 }

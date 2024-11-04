@@ -24,6 +24,17 @@ public class CommandlineQueryFactory
             var roomType = match.Groups[3].Value;
             return new AvailabilityQueryRequest(hotel, dateRange.Value.Start, dateRange.Value.End, roomType); 
         }
+        if (SearchRegex.IsMatch(command))
+        {
+            var match = SearchRegex.Matches(command).First();
+            var hotel = match.Groups[1].Value;
+            if (!int.TryParse(match.Groups[2].Value, CultureInfo.InvariantCulture, out var days))
+                return null;
+            
+            var roomType = match.Groups[3].Value;
+            var now = DateTime.UtcNow.Date;
+            return new SearchQueryRequest(hotel, now, now.AddDays(days), roomType); 
+        }
 
         return null;
     }

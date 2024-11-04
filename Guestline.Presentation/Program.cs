@@ -18,6 +18,7 @@ async Task Process()
     var hotelRepository = new HotelRepository(Options.Create(new FileRepositoryOptions()
         { FileLocation = options.HotelsPath }), new HotelMapper());
     var availabilityQueryHandler = new AvailabilityQueryHandler(bookingRepository, hotelRepository);
+    var searchQueryHandler = new SearchQueryHandler(bookingRepository, hotelRepository);
     
     while (true)
     {
@@ -35,11 +36,21 @@ async Task Process()
         switch (query)
         {
             case AvailabilityQueryRequest req:
+            {
                 var response = await availabilityQueryHandler.Handle(req, default);
                 if (!response.IsSuccess)
                     Console.WriteLine($"Something wrong happened {response.Exception?.Message ?? response.Error}");
                 Console.WriteLine(response.Value.AvailabilityCount);
                 break;
+            }
+            case SearchQueryRequest req:
+            {
+                var response = await searchQueryHandler.Handle(req, default);
+                if (!response.IsSuccess)
+                    Console.WriteLine($"Something wrong happened {response.Exception?.Message ?? response.Error}");
+                Console.WriteLine(string.Join(Environment.NewLine, response.Value.AvailableRooms.Select(x => $"({x.Start.ToString("yyyyMMMMdd")}-{x.End.ToString("yyyyMMMMdd")}, {x.RoomsCount})")));
+                break;
+            }
         }
         
     }
