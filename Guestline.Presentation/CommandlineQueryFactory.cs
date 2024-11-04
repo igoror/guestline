@@ -7,7 +7,7 @@ namespace Guestline.Presentation;
 public class CommandlineQueryFactory
 {
     private readonly Regex AvailabilityRegex = new("^Availability\\((.+), (.+), (.+)\\)$", RegexOptions.Compiled);
-    private readonly Regex SearchRegex = new("^Availability\\((.+), ([1-9]\\d{7})-?([1-9]\\d{7})?, (.+)\\)$", RegexOptions.Compiled);
+    private readonly Regex SearchRegex = new("^Search\\((.+), ([1-9]\\d*), (.+)\\)$", RegexOptions.Compiled);
     private readonly Regex DateRangeRegex = new("([1-9]\\d{7})-?([1-9]\\d{7})?", RegexOptions.Compiled);
 
     

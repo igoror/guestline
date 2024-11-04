@@ -48,7 +48,7 @@ async Task Process()
                 var response = await searchQueryHandler.Handle(req, default);
                 if (!response.IsSuccess)
                     Console.WriteLine($"Something wrong happened {response.Exception?.Message ?? response.Error}");
-                Console.WriteLine(string.Join(Environment.NewLine, response.Value.AvailableRooms.Select(x => $"({x.Start.ToString("yyyyMMMMdd")}-{x.End.ToString("yyyyMMMMdd")}, {x.RoomsCount})")));
+                Console.WriteLine(string.Join($",{Environment.NewLine}", response.Value.AvailableRooms.Select(x => $"({x.Start.ToString("yyyyMMdd")}-{x.End.ToString("yyyyMMdd")}, {x.RoomsCount})")));
                 break;
             }
         }

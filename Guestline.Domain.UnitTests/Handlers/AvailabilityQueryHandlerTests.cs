@@ -21,7 +21,7 @@ public class AvailabilityQueryHandlerTests : QueryHandlerTestsBase
         var hotelId = MockHotel(("Type", 10));
         MockReservations(hotelId);
 
-        var result = await _handler.Handle(new AvailabilityQueryRequest(hotelId, DateTime.Now, DateTime.Now.AddDays(1), "Type"),
+        var result = await _handler.Handle(new AvailabilityQueryRequest(hotelId, DateTime.UtcNow, DateTime.UtcNow.AddDays(1), "Type"),
             default);
 
         result.IsSuccess.Should().BeTrue();
@@ -31,7 +31,7 @@ public class AvailabilityQueryHandlerTests : QueryHandlerTestsBase
     [Test]
     public async Task Handle_MaxOneRoomBookedAtTheTime_ReturnsAllMinus1()
     {
-        var n = DateTime.Now.Date;
+        var n = DateTime.UtcNow.Date;
         var hotelId = MockHotel(("Type", 10));
         MockReservations(hotelId, 
             (n, n.AddDays(1), "Type"),
@@ -49,7 +49,7 @@ public class AvailabilityQueryHandlerTests : QueryHandlerTestsBase
     [Test]
     public async Task Handle_OnlyOneRoom_FullyBooked_Returns0()
     {
-        var n = DateTime.Now.Date;
+        var n = DateTime.UtcNow.Date;
         var hotelId = MockHotel(("Type", 1));
         MockReservations(hotelId, 
             (n, n.AddDays(1), "Type"),
@@ -67,7 +67,7 @@ public class AvailabilityQueryHandlerTests : QueryHandlerTestsBase
     [Test]
     public async Task Handle_RoomsBookedBeforeRequestedDay_ReturnsCorrectResult()
     {
-        var n = DateTime.Now.Date;
+        var n = DateTime.UtcNow.Date;
         var hotelId = MockHotel(("Type", 10));
         MockReservations(hotelId,
             (n, n.AddDays(3), "Type"),
@@ -92,7 +92,7 @@ public class AvailabilityQueryHandlerTests : QueryHandlerTestsBase
     [Test]
     public async Task Handle_RoomsBookedAfterRequestedDay_ReturnsCorrectResult()
     {
-        var n = DateTime.Now.Date;
+        var n = DateTime.UtcNow.Date;
         var hotelId = MockHotel(("Type", 10));
         MockReservations(hotelId,
             (n, n.AddDays(3), "Type"),
@@ -127,7 +127,7 @@ public class AvailabilityQueryHandlerTests : QueryHandlerTestsBase
     [Test]
     public async Task Handle_Overbooked_ReturnsNegative()
     {
-        var n = DateTime.Now.Date;
+        var n = DateTime.UtcNow.Date;
         var hotelId = MockHotel(("Type", 1));
         MockReservations(hotelId, 
             (n, n.AddDays(1), "Type"),
@@ -145,7 +145,7 @@ public class AvailabilityQueryHandlerTests : QueryHandlerTestsBase
     [Test]
     public async Task Handle_NoCrossingReservation_ReturnsFull()
     {
-        var n = DateTime.Now.Date;
+        var n = DateTime.UtcNow.Date;
         var hotelId = MockHotel(("Type", 100));
         MockReservations(hotelId, 
             (n, n.AddDays(1), "Type"),
@@ -162,7 +162,7 @@ public class AvailabilityQueryHandlerTests : QueryHandlerTestsBase
     [Test]
     public async Task Handle_RangeCheck_ShouldReturnCorrectResult()
     {
-        var n = DateTime.Now.Date;
+        var n = DateTime.UtcNow.Date;
         var hotelId = MockHotel(("Type", 100));
         MockReservations(hotelId, 
             (n, n.AddDays(5), "Type"),
@@ -179,7 +179,7 @@ public class AvailabilityQueryHandlerTests : QueryHandlerTestsBase
     [Test]
     public async Task Handle_FirstHandleDepartures_ShouldReturnCorrectResult()
     {
-        var n = DateTime.Now.Date;
+        var n = DateTime.UtcNow.Date;
         var hotelId = MockHotel(("Type", 3));
         MockReservations(hotelId, 
             (n.AddDays(5), n.AddDays(6), "Type"),
@@ -196,7 +196,7 @@ public class AvailabilityQueryHandlerTests : QueryHandlerTestsBase
     [Test]
     public async Task Handle_RoomTypesAreDoNotInterfereWithEachOther_ShouldReturnCorrectResult()
     {
-        var n = DateTime.Now.Date;
+        var n = DateTime.UtcNow.Date;
         var hotelId = MockHotel(("Type", 3));
         MockReservations(hotelId, 
             (n.AddDays(5), n.AddDays(6), "Type"),
